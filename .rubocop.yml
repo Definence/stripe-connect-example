@@ -25,3 +25,5 @@ Style/SymbolArray:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Metrics/MethodLength:
+  Enabled: false

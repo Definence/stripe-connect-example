@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :trainings, only: [:index, :create]
 
-  namespace :connect do
+  namespace :stripe do
     resource :oauth, only: [:show]
   end
 end
