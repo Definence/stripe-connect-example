@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_094820) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_account_id"
+    t.json "stripe_meta"
     t.string "email"
   end
 
@@ -35,8 +37,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_094820) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "stripe_user_id"
-    t.json "stripe_meta"
     t.string "email"
   end
 
