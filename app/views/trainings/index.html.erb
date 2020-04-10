@@ -1,4 +1,5 @@
 <%= link_to "Create user", "https://connect.stripe.com/express/oauth/authorize?client_id=ca_H46mzTZLtx0MpvYf5weaum3r5tzBTQ7l&stripe_user[business_type]=individual&stripe_user[email]=test-#{SecureRandom.hex(2)}@gmail.com" %>
+<%= button_to 'Create checkout', stripe_checkouts_path, method: :post %>
 <h1>Trainings</h1>
 
 <%= form_with(url: "/trainings", method: "create") do %>
@@ -16,3 +17,5 @@
     <span>Instructor id #<%= t.instructor_id %></span>
   </div>
 <% end %>
+
+<%= render partial: 'stripe_checkout_form' %>

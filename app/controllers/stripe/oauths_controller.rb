@@ -1,4 +1,4 @@
-class Connect::OauthsController < ApplicationController
+class Stripe::OauthsController < ApplicationController
   def show
     ext_account = Stripe::OAuth.token(grant_type: 'authorization_code', code: params[:code])
     current_user.update(stripe_account_id: ext_account.stripe_user_id, stripe_meta: ext_account.to_json)
