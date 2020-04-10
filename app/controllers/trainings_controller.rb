@@ -2,31 +2,16 @@ class TrainingsController < ApplicationController
   def index
     @trainings = Training.all
 
+    # TODO move to update user webhook
     if params[:code]
       response = Stripe::OAuth.token({
         grant_type: 'authorization_code',
         code: params[:code],
       })
 
-      pp '@@@@@@@@@@@@@@@'
-      pp '@@@@@@@@@@@@@@@'
-      pp response
-      pp '@@@@@@@@@@@@@@@'
-      pp '@@@@@@@@@@@@@@@'
-      # {
-      #   "access_token": "{ACCESS_TOKEN}",
-      #   "livemode": false,
-      #   "refresh_token": "{REFRESH_TOKEN}",
-      #   "token_type": "bearer",
-      #   "stripe_publishable_key": "{PUBLISHABLE_KEY}",
-      #   "stripe_user_id": "{ACCOUNT_ID}",
-      #   "scope": "express"
-      # }
-
-      # {
-      #   "error": "invalid_grant",
-      #   "error_description": "Authorization code does not exist: {AUTHORIZATION_CODE}"
-      # }
+      if response.stripe_user_id
+        current_user.update(stripe_user_id: response.stripe_user_id, stripe_meta: response.to_json)
+      end
     end
   end
 
@@ -40,12 +25,3 @@ class TrainingsController < ApplicationController
     params.require(:training).permit(:user_id, :instructor_id)
   end
 end
-
-
-# response = Stripe::OAuth.token({
-#   grant_type: 'authorization_code',
-#   code: 'acct_1GWIkiJWIfJwKWT4',
-#   assert_capabilities: ['transfers']
-# })
-
-# Stripe::Account.retrieve('acct_1GWIkiJWIfJwKWT4')

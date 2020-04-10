@@ -1,5 +1,4 @@
-<%= link_to "Create user", 'https://connect.stripe.com/express/oauth/authorize?&client_id=ca_H46mzTZLtx0MpvYf5weaum3r5tzBTQ7l&redirect_uri=http://localhost:3000/trainings&stripe_user[business_type]=individual' %>
-<%# redirect_uri=https://connect.stripe.com/connect/default/oauth/test %>
+<%= link_to "Create user", "https://connect.stripe.com/express/oauth/authorize?&client_id=ca_H46mzTZLtx0MpvYf5weaum3r5tzBTQ7l&redirect_uri=http://localhost:3000/trainings&stripe_user[business_type]=individual&stripe_user[email]=#{User.first.email}" %>
 <h1>Trainings</h1>
 
 <%= form_with(url: "/trainings", method: "create") do %>
