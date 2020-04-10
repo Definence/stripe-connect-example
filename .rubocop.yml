@@ -1,0 +1,27 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.6.3
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'cache/**/*'
+    - '.bundle/**/*'
+    - 'db/*'
+    - 'bin/*'
+    - 'log/**/*'
+
+Metrics/LineLength:
+  Max: 120
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false
+Bundler/OrderedGems:
+  Enabled: false
