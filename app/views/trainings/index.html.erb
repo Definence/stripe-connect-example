@@ -1,0 +1,19 @@
+<%= link_to "Create user", 'https://connect.stripe.com/express/oauth/authorize?&client_id=ca_H46mzTZLtx0MpvYf5weaum3r5tzBTQ7l&redirect_uri=http://localhost:3000/trainings&stripe_user[business_type]=individual' %>
+<%# redirect_uri=https://connect.stripe.com/connect/default/oauth/test %>
+<h1>Trainings</h1>
+
+<%= form_with(url: "/trainings", method: "create") do %>
+  <%= label_tag(:user_id, "user:") %>
+  <%= number_field(:training, :user_id, value: 1) %>
+  <%= label_tag(:instructor_id, "instructor:") %>
+  <%= number_field(:training, :instructor_id, value: 1) %>
+  <%= submit_tag("Create") %>
+<% end %>
+
+<% @trainings.each do |t| %>
+  <div>
+    <span>Task #<%= t.id %></span>
+    <span>User id #<%= t.user_id %></span>
+    <span>Instructor id #<%= t.instructor_id %></span>
+  </div>
+<% end %>
